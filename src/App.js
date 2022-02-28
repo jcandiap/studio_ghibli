@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { MovieCard } from './components/MovieCard';
+import { useFetchMovies } from './hooks/useFetchMovies';
 
 function App() {
+
+  const { data:movies, loading } = useFetchMovies();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3'>
+        {
+          movies.map( movie => (
+            <MovieCard
+              key = { movie.id } 
+              title= { movie.title }
+              image = { movie.image }
+              description = { movie.description }
+            />
+          ))
+        }
+      </div>
+    </>
   );
 }
 
