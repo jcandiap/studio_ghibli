@@ -1,3 +1,4 @@
+import { ModalMovie } from './components/ModalMovie';
 import { MovieCard } from './components/MovieCard';
 import { useFetchMovies } from './hooks/useFetchMovies';
 
@@ -11,14 +12,16 @@ function App() {
         {
           movies.map( movie => (
             <MovieCard
-              key = { movie.id } 
-              title= { movie.title }
+              key = { movie.id }
+              title = { movie.title }
               image = { movie.image }
               description = { movie.description }
+              data-modal-toggle = "modal-movie"
             />
           ))
         }
       </div>
+      <ModalMovie />
     </>
   );
 }
